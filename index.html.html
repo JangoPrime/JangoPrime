@@ -1,0 +1,85 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoplay Video with Sound</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    #myVideo {
+        position: fixed; /* Fixes the video in place */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        }
+  
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%; /* Ensure the body and HTML elements fill the viewport */
+            background-color: black;
+        }
+        /* Styling for the warning message */
+        #warningMessage {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000; /* Pure black background */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            text-align: center;
+            cursor: pointer;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Warning message -->
+    <div id="warningMessage">🎭Jango wanted to say have a good day! Click here to leave</div>
+    <!-- Video element -->
+    <video id="myVideo" playsinline>
+        <source src="JangoPrime.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        document.getElementById("warningMessage").addEventListener("click", function() {
+            var video = document.getElementById("myVideo");
+
+            // Unmute and play the video
+            video.muted = false;
+            video.play();
+
+            // Hide the warning message
+            this.style.display = "none";
+        });
+    </script>
+
+    <script>
+    window.addEventListener('beforeunload', function(event) {
+    alert('אתה בטוח שאתה רוצה לעזוב?'); // דוגמה להודעה
+  
+    yourFunction();
+    event.preventDefault();
+    event.returnValue = ''; // דפדפנים מודרניים עשויים להפסיק להציג את ההודעה
+  });
+  
+  function yourFunction() {
+    console.log('המשתמש מנסה לעזוב!');
+  }
+  
+    </script>
+
+</body>
+</html>
+
+```
